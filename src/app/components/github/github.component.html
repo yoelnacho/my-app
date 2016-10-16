@@ -1,5 +1,47 @@
-<span>
-  Github search
-</span>
+<div class="row">
+    <div class="col-md-12">
+        <form>
+            <div class="form-group">
+                <input type="text"
+                    class="form-control"
+                    placeholder="Github Username"
+                    name="username"
+                    (keyup.enter)="search()"
+                    [(ngModel)]="username">
+            </div>
+        </form>
+    </div>
+</div>
+
+<div *ngIf="user" class="panel panel-default">
+    <div class="panel-heading">
+        {{user.login}}
+    </div>
+    <div class="panel-body">
+        <div class="row">
+            <div class="col-md-4">
+                <img src="{{user.avatar_url}}" class="img-thumbnail github-avatar" alt="" />
+            </div>
+            <div class="col-md-8">
+                <div class="stats">
+                    <span class="label label-default">{{user.public_repos}} Public Repos</span>
+                    <span class="label label-primary">{{user.public_gists}} Public Gists</span>
+                    <span class="label label-success">{{user.followers}} Followers</span>
+                    <span class="label label-info">{{user.following}} Following</span>
+                </div>
+                <br>
+                <ul class="list-group">
+                    <li class="list-group-item"><strong>Username: </strong>{{user.login}}</li>
+                    <li class="list-group-item"><strong>Location: </strong>{{user.location}}</li>
+                    <li class="list-group-item"><strong>Email: </strong>{{user.email}}</li>
+                    <li class="list-group-item"><strong>Blog: </strong>{{user.blog}}</li>
+                    <li class="list-group-item"><strong>Member Since: </strong>{{user.created_at}}</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+<p class="text-right"><small>yoelnacho &copy; 2016 </small></p>
+
 <!-- no se porque hay que cerrarlo en un if para que se muestre el valor :-( -->
-<strong *ngIf="user"><u>{{user.login}}</u></strong>

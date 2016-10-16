@@ -8,8 +8,11 @@ import { GithubService } from '../../services/github.service';
 })
 export class GithubComponent {
     user:any;
+    repos:any;
+    username:string;
 
     // al importar el servicio dentro del componente, podemos utilizar sus funiones
+    // utilizo el contructor necesito que algo pase sin que se ejecute una función específica.
     constructor(private _githubService:GithubService) {
         // console.log('Github Componente Init...');
 
@@ -20,8 +23,10 @@ export class GithubComponent {
             //console.log(users);
             this.user = users;
         });
+    }
 
-
+    search(){
+        console.log(this.username);
     }
 
 }
