@@ -7,6 +7,7 @@ import { GithubService } from '../../services/github.service';
     styleUrls: ['./github.component.css']
 })
 export class GithubComponent {
+    user:any;
 
     // al importar el servicio dentro del componente, podemos utilizar sus funiones
     constructor(private _githubService:GithubService) {
@@ -16,8 +17,11 @@ export class GithubComponent {
         // dentro del constructor obtendo lo que me devuelve el sercicio
         // y lo almaceno como users
         this._githubService.getUser().subscribe(users => {
-            console.log(users);
+            //console.log(users);
+            this.user = users;
         });
+
+
     }
 
 }
