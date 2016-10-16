@@ -6,8 +6,8 @@ import 'rxjs/add/operator/map';
 export class GithubService {
     // usuario, id y clave generados desde github
     private username = 'yoelnacho';
-    private client_id = '826727ccde1d05b4032c';
-    private client_secret = '88fe00e871058d33de888e6afe53bafd00249fc9';
+    private client_id = '7909a3a30dadb3f82462';
+    private client_secret = '1da2869c4efe3509c85048eb103dc3e3025ffeb5';
 
     constructor(private _http:Http) {
         console.log('Github Service Init...');
@@ -19,6 +19,17 @@ export class GithubService {
         // la variable username es la que está definida arriba.
         return this._http.get('https://api.github.com/users/'+this.username)
             .map(res => res.json());
+    }
+
+    getRepos(){
+        // la variable username es la que está definida arriba.
+        return this._http.get('https://api.github.com/users/'+this.username+'/repos')
+            .map(res => res.json());
+    }
+
+    // Actualizo el username
+    updateUser(username:string){
+        this.username = username;
     }
 
 }

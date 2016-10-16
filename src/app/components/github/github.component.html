@@ -4,13 +4,18 @@
             <div class="form-group">
                 <input type="text"
                     class="form-control"
-                    placeholder="Github Username"
+                    placeholder="Search a Github Username"
                     name="username"
                     (keyup.enter)="search()"
                     [(ngModel)]="username">
+                    <!-- or (keyup)="search()" -->
             </div>
         </form>
     </div>
+</div>
+
+<div *ngIf="error" class="alert alert-danger" role="alert">
+    <strong>Oh snap!</strong> An error has occurred. 
 </div>
 
 <div *ngIf="user" class="panel panel-default">
@@ -19,8 +24,8 @@
     </div>
     <div class="panel-body">
         <div class="row">
-            <div class="col-md-4">
-                <img src="{{user.avatar_url}}" class="img-thumbnail github-avatar" alt="" />
+            <div class="col-md-3">
+                <img src="{{user.avatar_url}}" class="img-thumbnail github-avatar" alt="{{user.login}}" />
             </div>
             <div class="col-md-8">
                 <div class="stats">
@@ -33,13 +38,33 @@
                 <ul class="list-group">
                     <li class="list-group-item"><strong>Username: </strong>{{user.login}}</li>
                     <li class="list-group-item"><strong>Location: </strong>{{user.location}}</li>
-                    <li class="list-group-item"><strong>Email: </strong>{{user.email}}</li>
-                    <li class="list-group-item"><strong>Blog: </strong>{{user.blog}}</li>
+                    <li class="list-group-item"><strong>Name: </strong>{{user.name}}</li>
+                    <li class="list-group-item"><strong>Github URL: </strong>{{user.html_url}}</li>
                     <li class="list-group-item"><strong>Member Since: </strong>{{user.created_at}}</li>
                 </ul>
             </div>
         </div>
     </div>
+</div>
+
+<div class="panel panel-default">
+    <!-- Default panel contents -->
+    <div class="panel-heading">Repositories</div>
+    <div class="panel-body">
+        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Quia beatae, officiis sit dicta ipsam, porro magnam similique itaque doloribus laboriosam eos architecto incidunt nostrum enim repellendus quidem, eum quaerat sint!</p>
+    </div>
+
+    <!-- List group -->
+    <ul class="list-group">
+        <li class="list-group-item" *ngFor="let repo of repos">
+            <p>
+                {{ repo.id }} - <strong>{{ repo.name }}</strong>
+                <span class="label label-primary pull-right">{{ repo.language }}</span>
+            </p>
+            <p *ngIf="repo.description"><small>({{ repo.description }})</small></p>
+            <a href="{{repo.html_url}}" target="_blank">{{ repo.html_url }}</a>
+        </li>
+    </ul>
 </div>
 
 <p class="text-right"><small>yoelnacho &copy; 2016 </small></p>
