@@ -13,4 +13,12 @@ export class GithubService {
         console.log('Github Service Init...');
     }
 
+    // Datos de un usuario en github https://api.github.com/users/
+    // con esta función obtengo un observable.
+    getUser(){
+        // la variable username es la que está definida arriba.
+        return this._http.get('https://api.github.com/users/'+this.username)
+            .map(res => res.json());
+    }
+
 }
