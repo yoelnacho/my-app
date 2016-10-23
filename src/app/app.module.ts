@@ -7,11 +7,13 @@ import { GithubService } from './services/github.service';
 
 import { AppComponent } from './app.component';
 import { GithubComponent } from './components/github/github.component';
+import { BindingComponent } from './components/binding/binding.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    GithubComponent
+    GithubComponent,
+    BindingComponent
   ],
   imports: [
     BrowserModule,
