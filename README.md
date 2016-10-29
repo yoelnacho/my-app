@@ -4,6 +4,7 @@ This project was generated with [angular-cli](https://github.com/angular/angular
 
 ## Based in
 Angular 2 Githube Application - [Tutorial](https://www.youtube.com/watch?v=RL_2FnIBVgI).
+Angular 2 Routing & Navigation Basics - [Tutorial](https://www.youtube.com/watch?v=Uvj_7ZMrHmg)
 
 ## Development server
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.

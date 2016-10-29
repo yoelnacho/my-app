@@ -5,7 +5,13 @@ import { Component, OnInit } from '@angular/core';
   templateUrl: './binding.component.html',
   styleUrls: ['./binding.component.css']
 })
-export class BindingComponent implements OnInit {
+export class BindingComponent {
+
+    person: {
+        photoUrl: 'google.com',
+        emailAddress: 'mail@mail.com',
+        birthday: 'ayer'
+    }
 
   constructor() { }
 

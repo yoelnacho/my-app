@@ -1,3 +1,68 @@
-<p>
-  binding works!
-</p>
+<h2>Property Binding (one-way)</h2>
+
+<div>
+    <!-- bind [property] to the template express property -->
+    <img [src]="person.photoUrl" alt="{{person.photoUrl}}">
+
+    <!-- This is valid HTML syntax  -->
+    <input [value]="person.emailAddress">
+
+    <!-- this also works on your own components! -->
+    <!-- partially comment -->
+    <!-- <birthday-card [date]="person.birthday"></birthday-card> -->
+</div>
+
+<h2>Reference Binding</h2>
+
+<div>
+    <!-- userName variable is available globally in this template -->
+    <input #userName>
+    <!-- remember, input  emelements hava a value property -->
+    <button type="button" (click)="isTaken(userName.value)">
+        Check if taken
+    </button>
+</div>
+
+<h2>Shortcut Property Binding</h2>
+
+<div>
+    <!-- Add class '.important' if 'isImportant' evaluates to true -->
+    <img [class.important]="isImportant">
+    <!-- if 'isWide' evaluates to true, set the style to 'widePx' -->
+    <input [style.width]="isWide ? widePx : narrowPx">
+    <!-- you can also set attributes as opposed to properties -->
+    <div [attr.aria-disabled]="isDisabled"></div>
+</div>
+
+<h2>Event Binding</h2>
+
+<div>
+    <!-- When user clicks the button, call the 'saveUser' function on the component
+    instance and pass the underlying event -->
+    <button (click)="saveUser($event)"></button>
+
+    <!-- you can alse create events for custom components. here we have a depleted event,
+    and it's going to call the 'soundAlarm' function on the component instance
+    when it fires. -->
+    <!-- <coffee-marker (depleted)="soundAlarm('loud')"></coffee-marker> -->
+
+    <!-- there are also shortcut event binding! the submit function on the component
+    instance will be called when the user presses control and enter -->
+    <textarea (keydown.control.enter)="submit()"></textarea>
+</div>
+
+<h2>conditional display</h2>
+
+<div>
+    <!-- some directives change the structure of the component tree.
+    ngIf conditionally shows/hides a section of the UI -->
+    <section *ngIf="isSelectionVisible">Howdy!</section>
+
+    <!-- ngFor dynamically changes the structure too!
+    Note again the * and case-sensitivity of the directive -->
+    <ul>
+        <li *ngFor="let item of list">
+            {{item.name}}
+        </li>
+    </ul>
+</div>
