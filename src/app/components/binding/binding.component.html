@@ -1,23 +1,32 @@
 <h2>Property Binding (one-way)</h2>
+<h5>Data taked from the component</h5>
+<div class="row">
+    <div class="col-xs-6">
+        <!-- bind [property] to the template express property -->
+        <pre>&lt;img [src]="person.photoUrl"&gt;</pre>
+        <img [src]="person.photoUrl" alt="{{ person.photoUrl }}" width="80">
+    </div>
+    <div class="col-xs-6">
+        <!-- This is valid HTML syntax  -->
+        <pre>&lt;input [value]="person.emailAddress"&gt;</pre>
+        <input [value]="person.emailAddress" />
+    </div>
+</div>
 
-<div>
-    <!-- bind [property] to the template express property -->
-    <img [src]="person.photoUrl" alt="{{person.photoUrl}}">
-
-    <!-- This is valid HTML syntax  -->
-    <input [value]="person.emailAddress">
-
+<div class="row">
     <!-- this also works on your own components! -->
     <!-- partially comment -->
     <!-- <birthday-card [date]="person.birthday"></birthday-card> -->
 </div>
-
+<p *ngFor="let item of listado">
+    {{ item }}
+</p>
 <h2>Reference Binding</h2>
 
 <div>
     <!-- userName variable is available globally in this template -->
     <input #userName>
-    <!-- remember, input  emelements hava a value property -->
+    <!-- remember, input  emelements have a value property -->
     <button type="button" (click)="isTaken(userName.value)">
         Check if taken
     </button>
@@ -66,3 +75,23 @@
         </li>
     </ul>
 </div>
+
+
+<h2>Directive</h2>
+<blockquote>
+    <a href="https://angular.io/docs/ts/latest/guide/attribute-directives.html">Tutorial</a>
+    <p><small>
+    Esta directiva, pasa por parámetro la variable color (esta cambia desde los radio buttons)
+    desde el compomente se tomo el input (valor de color que varía desde el template)
+    los eventos listener (mouseenter/mouseleave) para aplicar el color al hacer hover
+    y Render que se utiliza para hacer 'setElementStyle' y cambiar el bgc inline.
+    </small></p>
+</blockquote>
+<div>
+    <input type="radio" name="colors" (click)="color='lightgreen'"> Green
+    <input type="radio" name="colors" (click)="color='yellow'"> Yellow
+    <input type="radio" name="colors" (click)="color='cyan'"> Cyan
+</div>
+<hr>
+<!-- direcive -->
+<p [appHighlight]="color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur voluptatum, soluta molestias. Consequatur sequi voluptas necessitatibus ducimus delectus doloremque voluptatem itaque, cumque provident ea voluptate commodi distinctio deserunt fugiat, odio!</p>
