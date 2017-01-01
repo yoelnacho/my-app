@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 
 @Component({
-  selector: 'app-binding',
-  templateUrl: './binding.component.html',
-  styleUrls: ['./binding.component.css']
+    selector: 'app-binding',
+    templateUrl: './binding.component.html',
+    styleUrls: ['./binding.component.scss']
 })
 export class BindingComponent {
     /*
@@ -21,22 +21,25 @@ export class BindingComponent {
     apellido:string = null; // esta variable no tiene valor, mejor dicho la variable tiene ausencia de valor.
     // Array
     lista:number[] = [1,2,3,4,5,6];
+    listado:number[];
     vocales:Array<string> = ['a','b','c','d','e'];
     booleanos:boolean[] = []; // arreglo booleano vacío.
 
-    public listado:number[] = [1,2,3];
-    public person = {
-        photoUrl: 'assets/angular2.png',
-        emailAddress: 'mail@mail.com',
-        birthday: 'ayer'
+    person:any; // Review: no me deja setearlo como un array
+    inputValue:string;
+
+    constructor() {
+        this.listado = [1,2,3,4,5,6];
+        this.person = {
+            photoUrl: 'assets/angular2.png',
+            emailAddress: 'mail@mail.com',
+            birthday: '20/10/1986'
+        }
     }
 
-  constructor() {
-
-  }
-
-  ngOnInit() {
-
-  }
+    takeIt(e){
+        let va = e;
+        this.inputValue = va;
+    }
 
 }

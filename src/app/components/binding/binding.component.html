@@ -4,6 +4,19 @@
     <div class="col-xs-6">
         <!-- bind [property] to the template express property -->
         <pre>&lt;img [src]="person.photoUrl"&gt;</pre>
+        <p>{{ person.birthday }}</p>
+    </div>
+    <div class="col-xs-6">
+        <!-- bind [property] to the template with [innerText] -->
+        <pre>&lt;p [innerText]="person.birthday"&gt;</pre>
+        <p [innerText]="person.birthday"></p>
+    </div>
+</div>
+<br>
+<div class="row">
+    <div class="col-xs-6">
+        <!-- bind [property] to the template express property -->
+        <pre>&lt;img [src]="person.photoUrl"&gt;</pre>
         <img [src]="person.photoUrl" alt="{{ person.photoUrl }}" width="80">
     </div>
     <div class="col-xs-6">
@@ -18,33 +31,47 @@
     <!-- partially comment -->
     <!-- <birthday-card [date]="person.birthday"></birthday-card> -->
 </div>
+
+<hr>
+<h2>ngFor</h2>
+<pre>&lt;p *ngFor="let item of listado"&gt;</pre>
+<!-- let se utiliza para setear una variable que no existe (creo) -->
+<label for="count">Cantidad de items en el array: {{ listado.length }}</label>
 <p *ngFor="let item of listado">
     {{ item }}
 </p>
-<h2>Reference Binding</h2>
 
+<hr>
+<h2>Reference Binding</h2>
+<pre>&lt;input #userName&gt;</pre>
 <div>
     <!-- userName variable is available globally in this template -->
     <input #userName>
-    <!-- remember, input  emelements have a value property -->
-    <button type="button" (click)="isTaken(userName.value)">
-        Check if taken
+    <!-- remember, input  elements have a value property -->
+    <button type="button" (click)="takeIt(userName.value)">
+        Enviar
     </button>
 </div>
+<br>
+<blockquote *ngIf="inputValue">
+    <small>El valor "<strong>{{ inputValue }}</strong>" el que obtuve mediante el atributo #userName
+    del input. Se envió y almacenó al hacer click en "Enviar" mediante la
+    función 'takeIt'.</small>
+</blockquote>
 
+<hr>
 <h2>Shortcut Property Binding</h2>
-
 <div>
     <!-- Add class '.important' if 'isImportant' evaluates to true -->
     <img [class.important]="isImportant">
     <!-- if 'isWide' evaluates to true, set the style to 'widePx' -->
     <input [style.width]="isWide ? widePx : narrowPx">
     <!-- you can also set attributes as opposed to properties -->
-    <div [attr.aria-disabled]="isDisabled"></div>
+    <div [attr.aria-disabled]="isDisabled">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
 </div>
 
+<hr>
 <h2>Event Binding</h2>
-
 <div>
     <!-- When user clicks the button, call the 'saveUser' function on the component
     instance and pass the underlying event -->
@@ -76,10 +103,22 @@
     </ul>
 </div>
 
+<hr><br>
 
 <h2>Directive</h2>
+
+<div [class.text-center]="isCentered">
+    <input type="radio" name="colors" (click)="color='lightgreen'"> Green
+    <input type="radio" name="colors" (click)="color='yellow'"> Yellow
+    <input type="radio" name="colors" (click)="color='cyan'"> Cyan
+</div>
+<hr>
+<pre>&lt;p [appHighlight]="color"&gt;</pre>
+<p><small><strong>ej:</strong> Hacer hover sobre el siguiente texto.</small></p>
+<!-- direcive -->
+<p [appHighlight]="color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur voluptatum, soluta molestias. Consequatur sequi voluptas necessitatibus ducimus delectus doloremque voluptatem itaque, cumque provident ea voluptate commodi distinctio deserunt fugiat, odio!</p>
 <blockquote>
-    <a href="https://angular.io/docs/ts/latest/guide/attribute-directives.html">Tutorial</a>
+    <a href="https://angular.io/docs/ts/latest/guide/attribute-directives.html">Ver tutorial</a>
     <p><small>
     Esta directiva, pasa por parámetro la variable color (esta cambia desde los radio buttons)
     desde el compomente se tomo el input (valor de color que varía desde el template)
@@ -87,11 +126,3 @@
     y Render que se utiliza para hacer 'setElementStyle' y cambiar el bgc inline.
     </small></p>
 </blockquote>
-<div>
-    <input type="radio" name="colors" (click)="color='lightgreen'"> Green
-    <input type="radio" name="colors" (click)="color='yellow'"> Yellow
-    <input type="radio" name="colors" (click)="color='cyan'"> Cyan
-</div>
-<hr>
-<!-- direcive -->
-<p [appHighlight]="color">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Aspernatur voluptatum, soluta molestias. Consequatur sequi voluptas necessitatibus ducimus delectus doloremque voluptatem itaque, cumque provident ea voluptate commodi distinctio deserunt fugiat, odio!</p>

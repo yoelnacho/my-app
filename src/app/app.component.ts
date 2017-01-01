@@ -7,5 +7,13 @@ import { Component } from '@angular/core';
 })
 
 export class AppComponent {
-  title = 'Bienvenidos a ';
+    brand:any;
+
+    constructor(){
+        this.brand = {
+            title: 'Angular2',
+            url: 'https://angular.io/docs/ts/latest/',
+            logo: 'assets/angular2.png'
+        }
+    }
 }
