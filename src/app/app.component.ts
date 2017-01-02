@@ -11,9 +11,17 @@ export class AppComponent {
 
     constructor(){
         this.brand = {
-            title: 'Angular2',
-            url: 'https://angular.io/docs/ts/latest/',
-            logo: 'assets/angular2.png'
+            "angular": {
+                title: 'Angular2',
+                url: 'https://angular.io/docs/ts/latest/',
+                logo: 'https://angular.io/resources/images/logos/angular2/angular.svg'
+                // logo: 'assets/angular2.png'
+            },
+            "bootstrap": {
+                title: 'Bootstrap4',
+                url: 'https://ng-bootstrap.github.io/',
+                logo: 'https://ng-bootstrap.github.io/img/logo.svg'
+            }
         }
     }
 }

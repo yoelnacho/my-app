@@ -1,10 +1,13 @@
 <nav class="navbar navbar-default">
     <div class="container">
         <div class="navbar-header">
-            <a class="navbar-brand" target="_blank" href="{{ brand.url }}">
-                <img [src]="brand.logo" width="20">
+            <a class="navbar-brand" title="{{ brand.angular.title }}" target="_blank" href="{{ brand.angular.url }}">
+                <img [src]="brand.angular.logo" width="21">
             </a>
-            <span class="navbar-brand">{{ brand.title }}</span>
+            <a class="navbar-brand" title="{{ brand.bootstrap.title }}" target="_blank" href="{{ brand.bootstrap.url }}">
+                <img [src]="brand.bootstrap.logo" width="20">
+            </a>
+            <span class="navbar-brand">{{ brand.angular.title }}</span>
         </div>
         <ul class="nav navbar-nav">
             <li><a routerLink="github" routerLinkActive="active">GitHub</a></li>
@@ -12,6 +15,8 @@
         </ul>
     </div>
 </nav>
+
+
 
 <div class="container">
     <div class="row">

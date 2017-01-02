@@ -1,15 +1,16 @@
+<!--                                     Property Binding (one-way) -->
 <h2>Property Binding (one-way)</h2>
 <h5>Data taked from the component</h5>
 <div class="row">
     <div class="col-xs-6">
-        <!-- bind [property] to the template express property -->
-        <pre>&lt;img [src]="person.photoUrl"&gt;</pre>
-        <p>{{ person.birthday }}</p>
+        <pre><small>&lt;&#123; &#123; person.birthday | date:"dd/MM/yyyy" &#125; &#125;&gt;</small></pre>
+        <p>{{ person.birthday | date:"dd/MM/yyyy" }}</p>
+        <small>(con date pipe)</small>
     </div>
     <div class="col-xs-6">
-        <!-- bind [property] to the template with [innerText] -->
-        <pre>&lt;p [innerText]="person.birthday"&gt;</pre>
-        <p [innerText]="person.birthday"></p>
+        <pre><small>&lt;p [innerText]="person.birthday | date:'dd/MM/yyyy'"&gt;</small></pre>
+        <p [innerText]="person.birthday | date:'dd/MM/yyyy'"></p>
+        <small>(con date pipe)</small>
     </div>
 </div>
 <br>
@@ -26,12 +27,17 @@
     </div>
 </div>
 
-<div class="row">
-    <!-- this also works on your own components! -->
-    <!-- partially comment -->
-    <!-- <birthday-card [date]="person.birthday"></birthday-card> -->
+
+<!--                                     Attribute -->
+<div [hidden]="visible">
+    <hr>
+    <h2>Attribute</h2>
+    <pre>&lt;div [hidden]="visible"&gt;</pre>
+    <p><button (click)="visible=true">Ocultar</button></p>
 </div>
 
+
+<!--                                     ngFor -->
 <hr>
 <h2>ngFor</h2>
 <pre>&lt;p *ngFor="let item of listado"&gt;</pre>
@@ -41,6 +47,8 @@
     {{ item }}
 </p>
 
+
+<!--                                     Reference Binding -->
 <hr>
 <h2>Reference Binding</h2>
 <pre>&lt;input #userName&gt;</pre>
@@ -59,17 +67,19 @@
     función 'takeIt'.</small>
 </blockquote>
 
+
+<!--                                     Shortcut Property Binding -->
 <hr>
 <h2>Shortcut Property Binding</h2>
-<div>
-    <!-- Add class '.important' if 'isImportant' evaluates to true -->
-    <img [class.important]="isImportant">
-    <!-- if 'isWide' evaluates to true, set the style to 'widePx' -->
-    <input [style.width]="isWide ? widePx : narrowPx">
-    <!-- you can also set attributes as opposed to properties -->
-    <div [attr.aria-disabled]="isDisabled">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
-</div>
+<!-- Add class '.important' if 'isImportant' evaluates to true -->
+<img [class.important]="isImportant">
+<!-- if 'isWide' evaluates to true, set the style to 'widePx' -->
+<input [style.width]="isWide ? widePx : narrowPx">
+<!-- you can also set attributes as opposed to properties -->
+<div [attr.aria-disabled]="isDisabled">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</div>
 
+
+<!--                                     Event Binding -->
 <hr>
 <h2>Event Binding</h2>
 <div>
@@ -87,8 +97,10 @@
     <textarea (keydown.control.enter)="submit()"></textarea>
 </div>
 
-<h2>conditional display</h2>
 
+<!--                                     conditional display -->
+<hr>
+<h2>conditional display</h2>
 <div>
     <!-- some directives change the structure of the component tree.
     ngIf conditionally shows/hides a section of the UI -->
@@ -103,8 +115,9 @@
     </ul>
 </div>
 
-<hr><br>
 
+<!--                                     Directive -->
+<hr>
 <h2>Directive</h2>
 
 <div [class.text-center]="isCentered">
@@ -126,3 +139,11 @@
     y Render que se utiliza para hacer 'setElementStyle' y cambiar el bgc inline.
     </small></p>
 </blockquote>
+
+
+<!-- REVIEW:  -->
+<div class="row">
+    <!-- this also works on your own components! -->
+    <!-- partially comment -->
+    <!-- <birthday-card [date]="person.birthday"></birthday-card> -->
+</div>

@@ -33,12 +33,12 @@ export class BindingComponent {
         this.person = {
             photoUrl: 'assets/angular2.png',
             emailAddress: 'mail@mail.com',
-            birthday: '20/10/1986'
+            birthday: '01,01,2017'
         }
     }
 
-    takeIt(e){
-        let va = e;
+    takeIt(value){
+        let va = value;
         this.inputValue = va;
     }
 
